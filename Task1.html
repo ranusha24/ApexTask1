@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Webpage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        /* Center only the heading */
+        h1 {
+            color: #1E90FF;
+            text-align: center;  /* This centers the heading */
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 700px;
+            margin: auto;   /* Keeps content centered horizontally */
+        }
+
+        h2 {
+            color: #1E90FF;
+        }
+
+        img {
+            width: 300px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            background: #1E90FF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #187bcd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Welcome to My Simple Webpage</h1>
+
+        <p>This is a basic webpage created using HTML, CSS, and JavaScript.</p>
+
+        <h2>About This Page</h2>
+        <p>Here you can see headings, paragraphs, an image, and a clickable button.</p>
+
+        <img src="https://via.placeholder.com/300" alt="Sample Image">
+
+        <p>
+            Visit my favorite site:
+            <a href="https://www.google.com" target="_blank">Google</a>
+        </p>
+
+        <h2>JavaScript Interaction</h2>
+        <button onclick="showMessage()">Click Me!</button>
+
+    </div>
+
+    <script>
+        function showMessage() {
+            alert("Hello! Button clicked successfully!");
+        }
+    </script>
+
+</body>
+</html>
+
