@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2 – Intermediate HTML, CSS, JavaScript</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #eef3f7;
+        }
+
+        header {
+            background: #1e88e5;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* Responsive Layout */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        @media(max-width: 700px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact Form */
+        .form-box, .todo-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #777;
+        }
+
+        button {
+            background: #1e88e5;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        button:hover {
+            background: #1565c0;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        ul li {
+            background: #f2f2f2;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .delete-btn {
+            background: red;
+            padding: 2px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Intermediate HTML, CSS, and JavaScript – Task 2</h1>
+    </header>
+
+    <div class="container">
+
+        <!-- CONTACT FORM -->
+        <div class="form-box">
+            <h2>Contact Form</h2>
+
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Enter your name">
+                <input type="email" id="email" placeholder="Enter your email">
+                <textarea id="message" placeholder="Enter your message"></textarea>
+                <button type="button" onclick="validateForm()">Submit</button>
+            </form>
+        </div>
+
+        <!-- TO-DO LIST -->
+        <div class="todo-box">
+            <h2>Dynamic To-Do List</h2>
+
+            <input type="text" id="taskInput" placeholder="Enter a task">
+            <button onclick="addTask()">Add Task</button>
+
+            <ul id="taskList"></ul>
+        </div>
+
+    </div>
+
+    <script>
+        // ------------------------------
+        // FORM VALIDATION
+        // ------------------------------
+        function validateForm() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("message").value;
+
+            if (name === "" || email === "" || message === "") {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            if (!email.includes("@")) {
+                alert("Enter a valid email!");
+                return;
+            }
+
+            alert("Form submitted successfully!");
+        }
+
+        // ------------------------------
+        // TO-DO LIST (DOM Manipulation)
+        // ------------------------------
+        function addTask() {
+            let taskText = document.getElementById("taskInput").value;
+
+            if (taskText === "") {
+                alert("Enter a task!");
+                return;
+            }
+
+            let ul = document.getElementById("taskList");
+
+            let li = document.createElement("li");
+            li.textContent = taskText;
+
+            let delBtn = document.createElement("span");
+            delBtn.textContent = "X";
+            delBtn.classList.add("delete-btn");
+
+            delBtn.onclick = function() {
+                ul.removeChild(li);
+            };
+
+            li.appendChild(delBtn);
+            ul.appendChild(li);
+
+            document.getElementById("taskInput").value = "";
+        }
+    </script>
+
+</body>
+</html>
